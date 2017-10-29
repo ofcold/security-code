@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="text-xs-center">
-				<button :disabled="getVerifyCode.length != 6" class="btn btn-link text-info display-4" @click="onActivatorAccount">
+				<button :disabled="getVerifyCode().length != verifyCodeLength" class="btn btn-link text-info display-4" @click="onActivatorAccount">
 					激活
 				</button>
 			</div>
