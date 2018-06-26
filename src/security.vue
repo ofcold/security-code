@@ -55,11 +55,6 @@
 				securityCode: new Array(this.securityCodeLength)
 			}
 		},
-		watch: {
-			value(val) {
-				this.$emit('input', Number(this.getCodeString()));
-			}
-		},
 		mounted() {
 			if ( this.value !== 0 ) {
 				this.securityCode = this.value.toString().substr(0, this.securityCodeLength).split('').map((v) => {
@@ -178,8 +173,11 @@
 				event.target.select()
 			},
 			getCodeString () {
+				let s = this.securityCode.join('');
 
-				return this.securityCode.join('');
+				this.$emit('input', Number(s));
+
+				return s;
 			}
 		}
 	}
