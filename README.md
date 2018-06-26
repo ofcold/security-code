@@ -36,4 +36,4 @@ A powerful security code input supports dynamic configuration of the number of i
 
 * Example loading...
 
-[CODE](https://github.com/ofcold/security-code/blob/master/sms.gif?sanitize=true)
+![CODE](https://github.com/ofcold/security-code/blob/master/sms.gif?sanitize=true)
