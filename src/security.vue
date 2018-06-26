@@ -32,10 +32,13 @@
 	export default {
 		name: 'OfcoldSecurityCode',
 		props: {
-			value: [Number, String],
+			value: {
+				type: [Number, String],
+				required: true
+			},
 			title: {
 				type: String,
-				default: '验证您的手机号码以创建新Ofcold ID'
+				required: true
 			},
 			description: String,
 			blurOnComplete: {

@@ -34,6 +34,13 @@ A powerful security code input supports dynamic configuration of the number of i
 	}
 ```
 
-* Example loading...
+## API
+| Props | Type | Required|
+|-----|-----|-----|
+|value|String,Number|true|
+|title|String|true|
+|description|Stringy|NULL|false|
+
+## Example loading...
 
 ![CODE](https://github.com/ofcold/security-code/blob/master/sms.gif?sanitize=true)
