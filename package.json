@@ -1,0 +1,30 @@
+{
+	"name": "ofcold-security-code",
+	"version": "1.0.5",
+	"description": "A powerful security code input supports dynamic configuration of the number of input boxes.",
+	"main": "src/security.vue",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ofcold/security-code.git"
+	},
+	"keywords": [
+		"security-code",
+		"input",
+		"vue"
+	],
+	"author": "Bill li",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ofcold/security-code/issues"
+	},
+	"homepage": "https://github.com/ofcold/security-code#readme",
+	"dependencies": {
+		"vue": "^2.5"
+	},
+	"devDependencies": {
+		"node-sass": "^4.9"
+	}
+}
