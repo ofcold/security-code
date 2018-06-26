@@ -1,6 +1,39 @@
-# vue-componets-sms-verify-code
-Mobile number form validation component.
+# Ofcold Security Code
+A powerful security code input supports dynamic configuration of the number of input boxes.
 
-* 效果图正在加载中...
+## Features
+- Automatic next input box.
+- Page initialization automatic countdown.
+- The number of custom input boxes.
+- Support copy and paste.
 
-<img src="https://github.com/anomalylab/vue-componets-sms-verify-code/blob/master/sms.gif">
+## Installation
+
+```bash
+	npm install --save ofcold-security-code
+```
+
+## Usage
+
+```html
+	<!-- Html  -->
+	<Sms v-model="code"></Sms>
+```
+
+```javascript
+	// Javascript
+	import Sms from 'ofcold-security-code';
+
+	export default {
+		data:() => ({
+			code: ''
+		}),
+		components: {
+			Sms
+		}
+	}
+```
+
+* Example loading...
+
+[CODE](https://github.com/ofcold/security-code/blob/master/sms.gif?sanitize=true)
