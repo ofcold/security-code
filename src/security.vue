@@ -238,7 +238,7 @@
 						margin: 0;
 					}
 					&:focus {
-						border: 2px solid #0088cc;
+						border: 1px solid #0064db;
 					}
 				}
 				&:nth-child(3) {
