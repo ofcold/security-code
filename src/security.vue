@@ -5,7 +5,7 @@
 			<div class="ofcold__security-code-description" v-if="description" v-html="description"></div>
 
 			<div class="ofcold__security-code-wrapper mt-3">
-				<div class="ofcold__security-code-field" v-for="n in codeLength">
+				<div class="ofcold__security-code-field" v-for="n in securityCodeLength">
 					<input
 						maxlength="1"
 						autocorrect="off"
@@ -14,7 +14,7 @@
 						spellcheck="false"
 						type="tel"
 						class="form-control"
-						v-model="code[n-1]"
+						v-model="securityCode[n-1]"
 						@focus="setSelected"
 						@input.stop="inputEvent"
 						@keydown.stop="downEvent"
@@ -45,14 +45,14 @@
 				type: Boolean,
 				default: false
 			},
-			codeLength: {
+			securityCodeLength: {
 				type: Number,
 				default: 6
 			}
 		},
 		data () {
 			return {
-				code: new Array(this.codeLength)
+				securityCode: new Array(this.securityCodeLength)
 			}
 		},
 		watch: {
@@ -62,7 +62,7 @@
 		},
 		mounted() {
 			if ( this.value !== 0 ) {
-				this.code = this.value.toString().substr(0, this.codeLength).split('').map((v) => {
+				this.securityCode = this.value.toString().substr(0, this.securityCodeLength).split('').map((v) => {
 					return Number(v);
 				});
 			}
@@ -75,7 +75,7 @@
 					event.target.value = value.substr(0, 1)
 				}
 
-				this.getCodeString().length === this.codeLength
+				this.getCodeString().length === this.securityCodeLength
 					 ? (this.blurOnComplete ? event.target.blur() : this.nextElement(event))
 					 : event.target.value && this.nextElement(event)
 			},
@@ -93,12 +93,12 @@
 					 i = 0; i < elements.length && !isNaN(Number(pasteData[i])); i++) {
 					len++
 					elements[i + index].firstChild.value = pasteData[i]
-					vm.code[i + index] = pasteData[i]
+					vm.securityCode[i + index] = pasteData[i]
 				}
 
 				return [
 					setTimeout(() => {
-						vm.getCodeString().length === vm.codeLength
+						vm.getCodeString().length === vm.securityCodeLength
 							 ? (
 								 vm.blurOnComplete
 								 	 ? event.target.blur()
@@ -179,7 +179,7 @@
 			},
 			getCodeString () {
 
-				return this.code.join('');
+				return this.securityCode.join('');
 			}
 		}
 	}
@@ -238,6 +238,9 @@
 						width: 42px;
 						height: 42px;
 						margin: 0;
+					}
+					&:focus {
+						border: 2px solid #0088cc;
 					}
 				}
 				&:nth-child(3) {
