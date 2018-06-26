@@ -5,7 +5,7 @@
 			<div class="ofcold__security-code-description" v-if="description" v-html="description"></div>
 
 			<div class="ofcold__security-code-wrapper mt-3">
-				<div class="ofcold__security-code-field" v-for="n in verifyCodeLength">
+				<div class="ofcold__security-code-field" v-for="n in codeLength">
 					<input
 						maxlength="1"
 						autocorrect="off"
@@ -14,7 +14,7 @@
 						spellcheck="false"
 						type="tel"
 						class="form-control"
-						v-model="verifyCode[n-1]"
+						v-model="code[n-1]"
 						@focus="setSelected"
 						@input.stop="inputEvent"
 						@keydown.stop="downEvent"
@@ -45,19 +45,24 @@
 				type: Boolean,
 				default: false
 			},
-			verifyCodeLength: {
+			codeLength: {
 				type: Number,
 				default: 6
 			}
 		},
 		data () {
 			return {
-				verifyCode: new Array(this.verifyCodeLength)
+				code: new Array(this.codeLength)
+			}
+		},
+		watch: {
+			value(val) {
+				this.$emit('input', Number(this.getCodeString()));
 			}
 		},
 		mounted() {
 			if ( this.value !== 0 ) {
-				this.verifyCode = this.value.toString().substr(0, this.verifyCodeLength).split('').map((v) => {
+				this.code = this.value.toString().substr(0, this.codeLength).split('').map((v) => {
 					return Number(v);
 				});
 			}
@@ -70,16 +75,17 @@
 					event.target.value = value.substr(0, 1)
 				}
 
-				this.getVerifyCode().length === this.verifyCodeLength
+				this.getCodeString().length === this.codeLength
 					 ? (this.blurOnComplete ? event.target.blur() : this.nextElement(event))
 					 : event.target.value && this.nextElement(event)
 			},
 			pasteEvent (index, event) {
-				let i
-				let pasteData
-				let elements = event.target.parentNode.parentNode.childNodes
-				let len = 0
-				let vm = this
+				let i,
+					pasteData,
+					elements = event.target.parentNode.parentNode.childNodes,
+					len = 0,
+					vm = this;
+
 				for (event.clipboardData && event.clipboardData.getData
 					 ? pasteData = event.clipboardData.getData('Text')
 					 : window.clipboardData && window.clipboardData.getData && (pasteData = window.clipboardData.getData('Text'))
@@ -87,16 +93,16 @@
 					 i = 0; i < elements.length && !isNaN(Number(pasteData[i])); i++) {
 					len++
 					elements[i + index].firstChild.value = pasteData[i]
-					vm.verifyCode[i + index] = pasteData[i]
+					vm.code[i + index] = pasteData[i]
 				}
 
 				return [
 					setTimeout(() => {
-						vm.getVerifyCode().length === vm.verifyCodeLength
+						vm.getCodeString().length === vm.codeLength
 							 ? (
 								 vm.blurOnComplete
 								 	 ? event.target.blur()
-									 : vm.previousElement(event, vm.getVerifyCode().length - 1)
+									 : vm.previousElement(event, vm.getCodeString().length - 1)
 							 )
 							 : vm.previousElement(event, index + len)
 					 }, 0),
@@ -171,12 +177,9 @@
 			setSelected (event) {
 				event.target.select()
 			},
-			getVerifyCode () {
-				let c =  this.verifyCode.join('');
+			getCodeString () {
 
-				this.$emit('input', Number(c));
-
-				return c;
+				return this.code.join('');
 			}
 		}
 	}
@@ -235,9 +238,6 @@
 						width: 42px;
 						height: 42px;
 						margin: 0;
-					}
-					&:focus {
-						border: 2px solid #0088cc;
 					}
 				}
 				&:nth-child(3) {
