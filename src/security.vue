@@ -175,7 +175,7 @@
 			getCodeString () {
 				let s = this.securityCode.join('');
 
-				this.$emit('input', Number(s));
+				this.$emit('input', s);
 
 				return s;
 			}
@@ -191,7 +191,6 @@
 		align-items: center;
 		margin-left: auto;
 		margin-right: auto;
-		max-width: 400px;
 		.text {
 			max-width: 350px;
 			margin-bottom: 10px;
@@ -205,7 +204,7 @@
 			margin-top: 5px;
 		}
 		&-description {
-			line-height: 1.3;
+			line-height: 1.2;
 			font-size: 1.2rem;
 			color: #616161;
 		}
