@@ -57,9 +57,7 @@
 		},
 		mounted() {
 			if ( this.value !== 0 ) {
-				this.securityCode = this.value.toString().substr(0, this.securityCodeLength).split('').map((v) => {
-					return Number(v);
-				});
+				this.securityCode = this.value.toString().substr(0, this.securityCodeLength).split('');
 			}
 		},
 		methods: {
@@ -173,11 +171,11 @@
 				event.target.select()
 			},
 			getCodeString () {
-				let s = this.securityCode.join('');
+				let code = this.securityCode.join('');
 
-				this.$emit('input', s);
+				this.$emit('input', code);
 
-				return s;
+				return code;
 			}
 		}
 	}
@@ -241,6 +239,9 @@
 					}
 				}
 				&:nth-child(3) {
+					margin-right: 20px;
+				}
+				&:nth-child(7) {
 					margin-right: 20px;
 				}
 			}
