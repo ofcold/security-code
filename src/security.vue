@@ -1,29 +1,23 @@
 <template>
-	<div id="OfcoldSecurityCode">
-		<div class="ofcold__security-code clearfix">
-			<h2 class="text-center text-xs-center" v-html="title"></h2>
-			<div class="ofcold__security-code-description" v-if="description" v-html="description"></div>
-
-			<div class="ofcold__security-code-wrapper mt-3">
-				<div class="ofcold__security-code-field" v-for="n in securityCodeLength">
-					<input
-						maxlength="1"
-						autocorrect="off"
-						autocomplete="off"
-						autocapitalize="off"
-						spellcheck="false"
-						type="tel"
-						class="form-control"
-						v-model="securityCode[n-1]"
-						@focus="setSelected"
-						@input.stop="inputEvent"
-						@keydown.stop="downEvent"
-						@keypress.stop="pressEvent"
-						@paste="pasteEvent(n-1, $event)"
-					>
-				</div>
+	<div class="ofcold__security-code clearfix">
+		<div class="ofcold__security-code-wrapper">
+			<div class="ofcold__security-code-field" v-for="n in securityCodeLength">
+				<input
+					maxlength="1"
+					autocorrect="off"
+					autocomplete="off"
+					autocapitalize="off"
+					spellcheck="false"
+					type="tel"
+					class="form-control"
+					v-model="securityCode[n-1]"
+					@focus="setSelected"
+					@input.stop="inputEvent"
+					@keydown.stop="downEvent"
+					@keypress.stop="pressEvent"
+					@paste="pasteEvent(n-1, $event)"
+				>
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -36,11 +30,6 @@
 				type: [Number, String],
 				required: true
 			},
-			title: {
-				type: String,
-				required: true
-			},
-			description: String,
 			blurOnComplete: {
 				type: Boolean,
 				default: false
@@ -72,6 +61,14 @@
 					 ? (this.blurOnComplete ? event.target.blur() : this.nextElement(event))
 					 : event.target.value && this.nextElement(event)
 			},
+			/**
+			 * Listen paste event.
+			 *
+			 * @param  {[type]} index
+			 * @param  {[type]} event
+			 *
+			 * @return {[array]}
+			 */
 			pasteEvent (index, event) {
 				let i,
 					pasteData,
@@ -183,29 +180,11 @@
 
 <style lang="scss" scoped>
 	.ofcold__security-code {
-		padding: 10px 15px 25px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		margin-left: auto;
 		margin-right: auto;
-		.text {
-			max-width: 350px;
-			margin-bottom: 10px;
-			word-wrap: break-word;
-			text-align: center;
-		}
-		&-icon {
-			font-size: 105px;
-			text-align: center;
-			color: #e1e1e1;
-			margin-top: 5px;
-		}
-		&-description {
-			line-height: 1.2;
-			font-size: 1.2rem;
-			color: #616161;
-		}
 		&-wrapper {
 			display: inline-block;
 			margin: auto;
@@ -241,15 +220,7 @@
 				&:nth-child(3) {
 					margin-right: 20px;
 				}
-				&:nth-child(7) {
-					margin-right: 20px;
-				}
 			}
-		}
-		@media only screen and (max-device-width: 736px) {
-			max-width: none;
-			padding-left: 0;
-			padding-right: 0;
 		}
 	}
 </style>
