@@ -213,9 +213,6 @@
 						height: 42px;
 						margin: 0;
 					}
-					&:focus {
-						border: 1px solid #0064db;
-					}
 				}
 				&:nth-child(3) {
 					margin-right: 20px;
