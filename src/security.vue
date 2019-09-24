@@ -213,7 +213,7 @@
 					font-size: 30px;
 					text-align: center;
 					padding: 0;
-					border: 1px solid #cccccc;
+					border: 1px solid var(--ofcold-code-border);
 					@media only screen and (max-device-width: 736px) {
 						width: 42px;
 						height: 42px;
@@ -221,6 +221,9 @@
 					}
 				}
 				&:nth-child(3) {
+					margin-right: 20px;
+				}
+				&:nth-child(7) {
 					margin-right: 20px;
 				}
 			}
