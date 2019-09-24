@@ -37,6 +37,10 @@
 			securityCodeLength: {
 				type: Number,
 				default: 6
+			},
+			isArray: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data () {
@@ -168,9 +172,10 @@
 				event.target.select()
 			},
 			getCodeString () {
-				let code = this.securityCode.join('');
-
-				this.$emit('input', code);
+				this.$emit(
+					'input',
+					this.isArray ? this.securityCode : this.securityCode.join('')
+				)
 
 				return code;
 			}
@@ -208,6 +213,7 @@
 					font-size: 30px;
 					text-align: center;
 					padding: 0;
+					border: 1px solid #ebebeb;
 					@media only screen and (max-device-width: 736px) {
 						width: 42px;
 						height: 42px;
