@@ -213,7 +213,7 @@
 					font-size: 30px;
 					text-align: center;
 					padding: 0;
-					border: 1px solid #ebebeb;
+					border: 1px solid #cccccc;
 					@media only screen and (max-device-width: 736px) {
 						width: 42px;
 						height: 42px;
