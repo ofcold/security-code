@@ -172,10 +172,8 @@
 				event.target.select()
 			},
 			getCodeString () {
-				this.$emit(
-					'input',
-					this.isArray ? this.securityCode : this.securityCode.join('')
-				)
+				let code = this.isArray ? this.securityCode : this.securityCode.join('')
+				this.$emit('input', code)
 
 				return code;
 			}
