@@ -181,50 +181,56 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.ofcold__security-code {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-left: auto;
-		margin-right: auto;
-		&-wrapper {
-			display: inline-block;
-			margin: auto;
-			min-width: 240px;
-			text-align: center;
-			@media only screen and (max-device-width: 736px) {
-				max-width: 320px;
-			}
-			.ofcold__security-code-field {
-				width: 40px;
-				display: inline-block;
-				margin-right: 10px;
-				float: left;
-				@media only screen and (max-device-width: 736px) {
-					float: none;
-					margin-right: 4px;
-				}
-				.form-control {
-					width: 44px;
-					height: 44px;
-					font-size: 30px;
-					text-align: center;
-					padding: 0;
-					border: 1px solid var(--ofcold-code-border);
-					@media only screen and (max-device-width: 736px) {
-						width: 42px;
-						height: 42px;
-						margin: 0;
-					}
-				}
-				&:nth-child(3) {
-					margin-right: 20px;
-				}
-				&:nth-child(7) {
-					margin-right: 20px;
-				}
-			}
-		}
-	}
+<style scoped>
+.ofcold__security-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ofcold__security-code-wrapper {
+  display: inline-block;
+  margin: auto;
+  min-width: 240px;
+  text-align: center;
+}
+@media only screen and (max-device-width: 736px) {
+  .ofcold__security-code-wrapper {
+    max-width: 320px;
+  }
+}
+.ofcold__security-code-wrapper .ofcold__security-code-field {
+  width: 40px;
+  display: inline-block;
+  margin-right: 10px;
+  float: left;
+}
+@media only screen and (max-device-width: 736px) {
+  .ofcold__security-code-wrapper .ofcold__security-code-field {
+    float: none;
+    margin-right: 4px;
+  }
+}
+.ofcold__security-code-wrapper .ofcold__security-code-field .form-control {
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+  text-align: center;
+  padding: 0;
+  border: 1px solid var(--ofcold-code-border);
+}
+@media only screen and (max-device-width: 736px) {
+  .ofcold__security-code-wrapper .ofcold__security-code-field .form-control {
+    width: 42px;
+    height: 42px;
+    margin: 0;
+  }
+}
+.ofcold__security-code-wrapper .ofcold__security-code-field:nth-child(3) {
+  margin-right: 20px;
+}
+.ofcold__security-code-wrapper .ofcold__security-code-field:nth-child(7) {
+  margin-right: 20px;
+}
 </style>
