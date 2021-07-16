@@ -22,9 +22,6 @@
 	},
 	"homepage": "https://github.com/ofcold/security-code#readme",
 	"dependencies": {
-		"vue": "^2.5"
-	},
-	"devDependencies": {
-		"node-sass": "^4.9"
+		"vue": "^3.0"
 	}
 }
