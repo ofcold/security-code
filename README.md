@@ -41,6 +41,9 @@ import {defineComponent, ref} from 'vue'
 import OfcoldCode from 'ofcold-security-code'
 
 export default defineComponent({
+	components: {
+		OfcoldCode
+	},
 	setup(props, ctx) {
 		const code = ref('')
 
