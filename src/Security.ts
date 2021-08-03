@@ -20,7 +20,7 @@ export default defineComponent({
 		len: { type: Number, default: 6 },
 		isArray: { type: Boolean, default: false },
 		size: { type: String, default: 'default' },
-		numeric: { type Boolean, default: false }
+		numeric: { type: Boolean, default: false }
 	},
 	emits: ['update:modelValue'],
 	setup({ modelValue, blurOnComplete, len, isArray, size, numeric}, context) {
