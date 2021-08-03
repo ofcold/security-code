@@ -18,7 +18,7 @@ export default defineComponent({
 		modelValue: { type: String, default: null },
 		blurOnComplete: { type: Boolean, default: false },
 		len: { type: Number, default: 6 },
-		isArray: { type: Boolean, default: true },
+		isArray: { type: Boolean, default: false },
 		size: { type: String, default: 'default' },
 	},
 	emits: ['update:modelValue'],
@@ -37,6 +37,10 @@ export default defineComponent({
 		// Monitor changes in modelValue and assign a data format that conforms to the input.
 		watch(() => modelValue, (newValue): void => {
 			data.securityCode = newValue.toString().substr(0, len).split('');
+
+			// When the value passed by the parent component is greater than the set required length, we will refresh the
+			// current value according to the provided data format and length.
+			returnCode();
 		}, {immediate: true });
 
 		/**
@@ -51,7 +55,7 @@ export default defineComponent({
 		 *
 		 * @return string | string[]
 		 */
-		function returnCode (): string | string[] {
+		function returnCode(): string | string[] {
 			let code = isArray ? _.filter(data.securityCode) : data.securityCode.join('');
 			context.emit('update:modelValue', code);
 			return code;
