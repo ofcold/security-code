@@ -11,7 +11,11 @@ A powerful security code input supports dynamic configuration of the number of i
 ## Installation
 
 ```bash
-npm install --save ofcold-security-code
+npm install --save @ofcold/security-code
+
+// OR
+
+yarn add @ofcold/security-code
 ```
 
 ## Usage
@@ -38,7 +42,7 @@ export default {
 
 // OR ...
 import {defineComponent, ref} from 'vue'
-import OfcoldCode from 'ofcold-security-code'
+import OfcoldCode from '@ofcold/security-code'
 
 export default defineComponent({
 	components: {
