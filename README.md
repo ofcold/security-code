@@ -22,31 +22,31 @@ yarn add @ofcold/security-code
 
 ```html
 <!-- Html  -->
-<ofcold-code v-model="code"/>
+<input-code v-model="code"/>
 ```
 
 
 #### VUE 2.0 And 3.0
 ```javascript
 // Javascript
-import OfcoldCode from 'ofcold-security-code';
+import InputCode from '@ofcold/security-code';
 
 export default {
 	data:() => ({
 		code: ''
 	}),
 	components: {
-		OfcoldCode
+		InputCode
 	}
 }
 
 // OR ...
 import {defineComponent, ref} from 'vue'
-import OfcoldCode from '@ofcold/security-code'
+import InputCode from '@ofcold/security-code'
 
 export default defineComponent({
 	components: {
-		OfcoldCode
+		InputCode
 	},
 	setup(props, ctx) {
 		const code = ref('')
