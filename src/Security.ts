@@ -20,9 +20,10 @@ export default defineComponent({
 		len: { type: Number, default: 6 },
 		isArray: { type: Boolean, default: false },
 		size: { type: String, default: 'default' },
+		numeric: { type: Boolean, default: false }
 	},
 	emits: ['update:modelValue'],
-	setup({ modelValue, blurOnComplete, len, isArray, size }, context) {
+	setup({ modelValue, blurOnComplete, len, isArray, size, numeric}, context) {
 		// const { modelValue, blurOnComplete, len, isArray, size } = toRefs<any>(props);
 		const data = reactive<SecurityCodeInterface>({
 			securityCode: new Array(len),
@@ -97,12 +98,13 @@ export default defineComponent({
 
 		const createInputNode = (k: number) => {
 			return createVNode('input', {
-				type: 'text',
+				type: numeric ? 'number' : 'text',
 				maxlength: 1,
 				autocorrect: 'off',
 				autocomplete: 'off',
 				autocapitalize: 'off',
 				spellcheck: false,
+				inputmode: numeric ? "numeric" : 'none',
 				value: data.securityCode[k],
 				onFocus: (e: FocusEvent) => SecurityCodeDom.make(e).target().select(),
 				onInput: (e: InputEvent) => {
