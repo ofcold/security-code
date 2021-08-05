@@ -1,5 +1,5 @@
 import {
-  defineComponent, reactive, computed, watch, toRefs, createVNode,
+  defineComponent, reactive, computed, watch, createVNode,
 } from 'vue';
 import * as _ from 'lodash';
 import { SecurityCodeDom } from './SecurityCodeDom';
@@ -39,6 +39,17 @@ export default defineComponent({
       },
     });
 
+    /**
+     * Return the security code entered by the current user according to the return data requirements.
+     *
+     * @return string | string[]
+     */
+    function returnCode(): string | string[] {
+      const code = isArray ? _.filter(data.securityCode) : data.securityCode.join('');
+      context.emit('update:modelValue', code);
+      return code;
+    }
+
     // Monitor changes in modelValue and assign a data format that conforms to the input.
     watch(() => modelValue, (newValue): void => {
       data.securityCode = newValue.toString().substr(0, len).split('');
@@ -55,24 +66,13 @@ export default defineComponent({
 		 */
     const displaySize = computed(() => _.get(data.sizes, 'size'));
 
-    /**
-		 * Return the security code entered by the current user according to the return data requirements.
-		 *
-		 * @return string | string[]
-		 */
-    function returnCode(): string | string[] {
-      const code = isArray ? _.filter(data.securityCode) : data.securityCode.join('');
-      context.emit('update:modelValue', code);
-      return code;
-    }
-
     function pasteEvent(index: number, event: ClipboardEvent) {
       const dom = SecurityCodeDom.make(event);
       const win = window as any;
 
       let i: number;
       const elements = dom.childrens();
-      let len = 0;
+      let length = 0;
       let pasteData: string[] | string = '';
 
       for (event.clipboardData && event.clipboardData.getData
@@ -80,7 +80,7 @@ export default defineComponent({
 				 : win.clipboardData && win.clipboardData.getData && (pasteData = win.clipboardData.getData('Text'))
 				 , pasteData = (pasteData as string).replace(/\s/g, '').substr(0, elements.length - index).split(''),
 				 i = 0; i < elements.length && !isNaN(Number(pasteData[i])); i++) {
-        len++;
+        length++;
         (elements[i + index].firstChild as HTMLInputElement).value = pasteData[i];
         data.securityCode[i + index] = pasteData[i];
       }

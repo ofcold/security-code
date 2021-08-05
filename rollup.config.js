@@ -7,7 +7,6 @@ import pkg from './package.json';
 
 const name = pascalCase(pkg.name.replace(/^.+\//, ''));
 
-
 export default ['umd', 'esm'].map((format) => ({
   input: 'src/index.ts',
   output: ['development', 'production'].map((mode) => {

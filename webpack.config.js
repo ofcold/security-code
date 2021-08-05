@@ -65,7 +65,6 @@ module.exports = (env) => ({
   ],
   externals: env.production ? {
     vue: 'Vue',
-    securitycode: 'SecurityCode',
   } : {},
   resolve: {
     alias: {
