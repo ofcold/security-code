@@ -102,5 +102,6 @@
 			"stylelint --fix",
 			"git add"
 		]
-	}
+	},
+	"version": "0.0.1"
 }
