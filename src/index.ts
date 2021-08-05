@@ -51,8 +51,8 @@ export default defineComponent({
     }
 
     // Monitor changes in modelValue and assign a data format that conforms to the input.
-    watch(() => modelValue, (newValue): void => {
-      data.securityCode = newValue.toString().substr(0, len).split('');
+    watch(() => modelValue, (newValue: string): void => {
+      data.securityCode = newValue.substr(0, len).split('');
 
       // When the value passed by the parent component is greater than the set required length, we will refresh the
       // current value according to the provided data format and length.
