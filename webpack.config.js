@@ -35,6 +35,20 @@ module.exports = (env) => ({
           'sass-loader',
         ],
       },
+      {
+        test: /\.md$/,
+        use: [
+          'vue-loader',
+          {
+            loader: 'markdown-to-vue-loader',
+            options: {
+              componentWrapper: '<demo-block></demo-block>',
+              tableClass: 'table',
+              tableWrapper: '<div class="table-responsive"></div>',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -51,6 +65,7 @@ module.exports = (env) => ({
   ],
   externals: env.production ? {
     vue: 'Vue',
+    securitycode: 'SecurityCode',
   } : {},
   resolve: {
     alias: {

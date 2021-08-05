@@ -1,4 +1,4 @@
-declare module '@ofcold/security-code' {
+declare module 'ofcold-vue-security-code' {
   import { Component } from 'vue';
 
   const SecurityCode: Component;
