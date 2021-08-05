@@ -11,11 +11,11 @@ A powerful security code input supports dynamic configuration of the number of i
 ## Installation
 
 ```bash
-npm install --save @ofcold/security-code
+npm install --save vue-security-code
 
 // OR
 
-yarn add @ofcold/security-code
+yarn add vue-security-code
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ yarn add @ofcold/security-code
 #### VUE 2.0 And 3.0
 ```javascript
 // Javascript
-import InputCode from '@ofcold/security-code';
+import InputCode from 'vue-security-code';
 
 export default {
 	data:() => ({
@@ -42,7 +42,7 @@ export default {
 
 // OR ...
 import {defineComponent, ref} from 'vue'
-import InputCode from '@ofcold/security-code'
+import InputCode from 'vue-security-code'
 
 export default defineComponent({
 	components: {
