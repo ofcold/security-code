@@ -1,4 +1,3 @@
-
 import createBanner from 'create-banner';
 import postcss from 'rollup-plugin-postcss';
 import typescript from 'rollup-plugin-typescript2';
