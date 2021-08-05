@@ -1,5 +1,5 @@
 {
-	"name": "@ofcold/vue-security-code",
+	"name": "@ofcold-security-code",
 	"description": "A powerful security code input supports dynamic configuration of the number of input boxes.",
 	"main": "dist/security-code.js",
 	"module": "dist/security-code.esm.js",
@@ -103,5 +103,5 @@
 			"git add"
 		]
 	},
-	"version": "0.0.2"
+	"version": "0.0.1"
 }
